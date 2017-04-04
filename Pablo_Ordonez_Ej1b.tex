@@ -1,0 +1,85 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+% cabecera y pie
+\usepackage{fancyhdr} % activamos el paquete
+\pagestyle{fancy}
+\usepackage[margin=2cm, headheight=10pt, includeheadfoot]{geometry}
+\chead{\includegraphics[width=\textwidth]{logo}}
+\renewcommand{\headrulewidth}{0pt}
+%\renewcommand{\headrulewidth}{0pt}
+%\renewcommand{\footrulewidth}{0pt}
+%\setlength\headheight{80.0pt}
+%\addtolength{\textheight}{-80.0pt}
+%\chead{\includegraphics[width=\textwidth]{logo}}
+%\renewcommand{\headrulewidth}{0pt}
+\title{Ejercicio1b}
+\author{Pablo Fernando Ordo<U+00F1>ez Ordo<U+00F1>ez}
+
+\usepackage{Sweave}
+\begin{document}
+\input{Pablo_Ordonez_Ej1b-concordance}
+
+
+\maketitle
+\thispagestyle{fancy}
+
+\section*{Velocidad de ca<U+00ED>da libre de la pelota de ping-pong}
+En este ejercicio consideraremos el ejemplo de una pelota de ping pong que se deja caer bajo la influencia de la fuerza de la gravedad y la resistencia del aire.
+La evoluci<U+00F3>n de la velocidad de la pelota a lo largo del tiempo se puede modelar por medio de la siguiente ecuaci<U+00F3>n diferencial, donde la velocidad $v$ es la variable de estado, y $g = 9,8m/seg^{2}$  es la aceleraci<U+00F3>n de la gravedad, $M = 0,0028kg$ es la masa de la pelota, $R = 0,02m$ es su radio, $\mu = 1,789 \times 10^{-5} kg/(m seg)$ es la viscosidad din<U+00E1>nica del aire, y $\rho = 1,205 kg/m^{3}$ su densidad:
+
+\begin{equation}
+\frac{dv}{dt}=-g-\frac{\rho\pi R^{2}C_{D}(Re)}{2M}\mid v \mid v,    v(0)=0,
+\end{equation}
+donde:
+\begin{align*}
+Re = \frac{2\rho R}{\mu} \mid v \mid,  
+C_{D}(Re) =
+\left\lbrace
+\begin{array}{ccc}
+\frac{24}{Re}+\frac{2}{5}+\frac{6}{1+\sqrt{Re}} &\textup{si } &Re > 0, \\
+0 &\textup{si } &Re = 0. 
+\end{array}
+\right.
+\end{align*}
+
+Aqu<U+00ED>, $C_{D}(Re)$ es el coeficiente de arrastre de un fluido cualquiera sobre una esfera de superficie suave, que es funci<U+00F3>n del $n\acute{u}mero\:de\:Reynols\:Re$, directamente proporcional a la magnitud de la velocidad $|v|$ de la esfera. Las unidades utilizadas son metros para la longitud, segundos para el tiempo, y kilogramos para la masa.
+\begin{enumerate}
+\item 
+Aplicar el m<U+00E9>todo Euler con longitud de paso $h = 1/200$ para obtener aproximaciones $v_j$ de la velocidad $v(t_j)$ de la pelota (donde $v(t)$ es la soluci<U+00F3>n del problema (1) en los tiempos
+\begin{equation}
+t0 = 0, t1 = h, t2 = 2h,...,t3998 = 3998h, t3999 = 3999h, t4000 = 4000h = 20. 
+\end{equation}
+
+\item
+Comprobar que la velocidad en los tiempos finales (por ejemplo, en los <U+00FA>ltimos seis tiempos) es ex<U+00E1>tamente la misma. Esta velocidad es la que se denomina velocidad terminal, que denotaremos por $v_T$. Para dicha velocidad $v_T$, la aceleraci<U+00F3>n de la gravedad y la resistencia del aire tienen la misma magnitud y signos opuestos, es decir, el lado derecho de la ecuaci<U+00F3>n diferencial (la aceleraci<U+00F3>n total) se anula cuando $v$ toma el valor de la velocidad terminal. Comprobar si esto es efectivamente as<U+00ED>, y comentar el resultado.
+
+\item
+El modelo matem<U+00E1>tico (1) admite la siguiente versi<U+00F3>n simplificada (estudiada en la presentaci<U+00F3>n de la primera parte del Tema 1, y considerada tambi<U+00E9>n en el Ejercicio 1.a)
+\begin{equation}
+\frac{dv}{dt} = -g+\frac{c}{M}v^{2},\; v(0) = 0,
+\end{equation}
+donde $c > 0$ es un par<U+00E1>metro constante a determinar. Un criterio razonable para determinar el valor de $c$ es exigir que la velocidad terminal en el modelo simplificado coincida con la velocidad $v_T$ obtenida en el apartado anterior. Determinar el valor de $c$ que verifica dicho criterio.
+
+\item
+El modelo simplicado (3) tiene la ventaja de que conocemos explitamente la solucion exacta. Para hacernos una idea del error que hemos cometido al aproximar la soluci<U+00F3>n del problema (1) por medio del m<U+00E9>todo de Euler, aplicaremos dicho m<U+00E9>todo al problema simplificado (3) para la misma discretizacion temporal (2), para obtener las aproximaciones $\tilde{v}_j \approx v(t_j)$, donde $v(t)$ es la soluci<U+00F3>n exacta del problema (3). Incluiremos en una misma figura, (i) el error $|\tilde{v}_j - v(t_j)|$ cometido en funci<U+00F3>n de los tiempos $t_j$ al aproximar la soluci<U+00F3>n de (3) con el m<U+00E9>todo de Euler para la discretizaci<U+00F3>n (2), y (ii) la diferencia $\mid\tilde{v}_j - v_j\mid$ entre los resultados num<U+00E9>ricos (obtenidos con el m<U+00E9>todo de Euler) para los problemas (1) y (3) respectivamente.
+
+\item
+Si se busca en internet informaci<U+00F3>n en sobre la velocidad terminal de una pelota de ping-pong, se puede ver que en algunos casos se habla de $9,5m/seg$. V<U+00E9>ase por ejemplo el resumen de un articulo cient<U+00ED>fico de 1984 que se puede encontrar en el sitio http://aapt.scitation.org/doi/10.1119/1.13904. Comprobar hasta que punto coincide esto con el resultado obtenido en el apartado 2. En la actualidad, el radio de una pelota de ping-pong estandar es $R = 0,02 m$ y su masa $M = 0,0028 kg$, sin embargo, antes del ano 2000, las pelotas de ping-pong sol<U+00ED>an ser algo menores. En el articulo mencionado, consideran pelotas de radio $R = 0,0185m$ y masa $M = 0,00266kg$. Repetir la simulaci<U+00F3>n del apartado 1. pero con $R = 0,0185m$ y $M = 0,00266kg$. Representar en una misma figura los resultados de la simulaci<U+00F3>n (con gr<U+00E1>ficas de la velocidad con respecto al tiempo) obtenidos en el apartado 1 (para $R = 0,02m$ y $M = 0,0028 kg$) y en este apartado (para los datos de la pelota de ping-pong del siglo pasado). <U+00BF>Son las diferencias apreciables? <U+00BF>En cual de los dos casos es la velocidad terminal mas cercana a $9,5 m/seg$?
+
+\item
+Los valores $\mu = 1,789 \times 10^{-5} kg/(m seg)$ de la viscosidad din<U+00E1>nica del aire y de su densidad $\rho = 1,205 kg/m^{3}$ dados al principio del enunciado de este problema se refieren a los valores estandar de la atm<U+00F3>sfera al nivel del mar. En cambio, a $3000 m$ de altura, $\mu = 1,69 \times 10^{-5} kg/(m seg),\, \rho = 0,9 kg/m^{3}$. Repetir la simulaci<U+00F3>n del apartado 1. (con $R = 0,02 m$) pero con estos valores de los par<U+00E1>metros. Representar en una misma figura los resultados de la simulaci<U+00F3>n de las velocidades al nivel del mar y a $3000 m$ de altura. <U+00BF>Son las diferencias apreciables?
+
+\end{enumerate}
+
+
+
+\end{document}
+
+
